@@ -1,0 +1,21 @@
+<aside>
+
+    <div id="dive7rLeftTop"></div>
+    {% if 'central_' in pages.current %}
+        {% element 'snippets/menu_central' %}
+    {% else %}
+    <div class="menudefiltros">
+        {% element 'new-smart-filter' %}
+    {% endif %}        
+    </div>
+
+    <div id="dive7rLeftMiddle"></div>
+    <div id="dive7rLeftBottom"></div>
+
+</aside>
+
+{% if banner.side %}
+    <div class="banner banner-side">
+        {{ banner.side }}
+    </div>
+{% endif %}

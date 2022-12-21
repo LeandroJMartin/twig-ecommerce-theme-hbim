@@ -1,0 +1,518 @@
+{#
+ # Fontes
+ #}
+{% set fonts = {
+  'font-ubuntu': '//fonts.googleapis.com/css?family=Ubuntu:500italic,700italic,500,300,700,400italic,300italic,400',
+  'font-lato': '//fonts.googleapis.com/css?family=Lato:100,900,700italic,300,400,400italic,100italic,900italic,300italic,700',
+  'font-averia': '//fonts.googleapis.com/css?family=Averia+Serif+Libre:400,700,400italic',
+  'font-exo': '//fonts.googleapis.com/css?family=Exo:900,100,700,400,800,500,200,600,100italic,200italic,400italic,300italic,500italic,600italic,700italic,800italic,900italic',
+  'font-nunito': '//fonts.googleapis.com/css?family=Nunito:300,700',
+  'font-amaranth': '//fonts.googleapis.com/css?family=Amaranth:400,700',
+  'font-maven-pro': '//fonts.googleapis.com/css?family=Maven+Pro:400,700',
+  'font-lora': '//fonts.googleapis.com/css?family=Lora:400,700',
+  'font-asap': '//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic'
+} %}
+
+<link type="text/css" rel="stylesheet" href="{{ attribute(fonts, settings.fonts) }}" media="all" />
+
+{#
+ # AplicaÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ£o de cores e backgrounds
+ #}
+<style media="screen" type="text/css">
+  /* tone 1 */
+  .theme-{{ themeID }} .color-tone-1{
+    color: {{ settings.color_tone_1 }};
+  }
+
+  .theme-{{ themeID }} .bg-tone-1,
+  .theme-{{ themeID }} .bgcolor{
+    background-color: {{ settings.color_tone_1 }};
+  }
+
+  .theme-{{ themeID }} .border-tone-1{
+    border-color: {{ settings.color_tone_1 }};
+  }
+
+  .color-1 .border-tone-1 { border-color: rgba(26,11,48,.1); }
+  .color-2 .border-tone-1 { border-color: rgba(64,78,52,.1); }
+  .color-3 .border-tone-1 { border-color: rgba(90,145,197,.1); }
+  .color-4 .border-tone-1 { border-color: rgba(0,9,25,.1); }
+  .color-5 .border-tone-1 { border-color: rgba(134,98,62,.1); }
+
+  /* tone 2 */
+  .theme-{{ themeID }} .color-tone-2{
+    color: {{ settings.color_tone_2 }};
+  }
+
+  .theme-{{ themeID }} .bg-tone-2{
+    background-color: {{ settings.color_tone_2 }};
+  }
+
+  .theme-{{ themeID }} .border-tone-2{
+    border-color: {{ settings.color_tone_2 }};
+  }
+
+  /* tone 3 */
+  .theme-{{ themeID }} .color-tone-3{
+    color: {{ settings.color_tone_3 }};
+  }
+
+  .theme-{{ themeID }} .bg-tone-3{
+    background-color: {{ settings.color_tone_3 }};
+  }
+
+  .theme-{{ themeID }} .border-tone-3{
+    border-color: {{ settings.color_tone_3 }};
+  }
+
+  /* tone 4 */
+  .theme-{{ themeID }} .color-tone-4{
+    color: {{ settings.color_tone_4 }};
+  }
+
+  .theme-{{ themeID }} .bg-tone-4{
+    background-color: {{ settings.color_tone_4 }};
+  }
+
+ .theme-{{ themeID }} .border-tone-4{
+    border-color: {{ settings.color_tone_4 }};
+  }
+
+  /* tone 5 */
+  .theme-{{ themeID }} .color-tone-5{
+    color: {{ settings.color_tone_5 }};
+  }
+
+  .theme-{{ themeID }} .bg-tone-5,
+  .theme-{{ themeID }} div.bg-tone-5,
+  .theme-{{ themeID }} a.bg-tone-5:hover{
+    background-color: {{ settings.color_tone_5 }};
+  }
+
+  .theme-{{ themeID }} .bg-tone-5.bg-opacity-30{
+    background-color: {{ settings.color_tone_5 }};
+  }
+
+  .theme-{{ themeID }} .bg-tone-5.bg-opacity-50{
+    background-color: {{ settings.color_tone_5 }};
+  }
+
+  .theme-{{ themeID }} .bg-tone-5.bg-opacity-60{
+    background-color: {{ settings.color_tone_5 }}
+  }
+
+  .theme-{{ themeID }} .border-tone-5{
+    border-color: {{ settings.color_tone_5 }};
+  }
+
+  .color-1 .border-tone-5.border-opacity-25 { border-color: rgba(216,213,217,.25); }
+  .color-2 .border-tone-5.border-opacity-25 { border-color: rgba(211,225,189,.25); }
+  .color-3 .border-tone-5.border-opacity-25 { border-color: rgba(119,136,150,.25); }
+  .color-4 .border-tone-5.border-opacity-25 { border-color: rgba(211,211,211,.25); }
+  .color-5 .border-tone-5.border-opacity-25 { border-color: rgba(108,104,95,.25); }
+
+  .theme-{{ themeID }} .border-tone-5.hover{
+    border-color: transparent;
+  }
+
+  .theme-{{ themeID }} .border-tone-5.hover:hover{
+    border-color: {{ settings.color_tone_5 }};
+  }
+
+  /* tone 6 */
+  .theme-{{ themeID }} .color-tone-6{
+    color: {{ settings.color_tone_6 }};
+  }
+
+  .theme-{{ themeID }} .bg-tone-6{
+    background-color: {{ settings.color_tone_6 }};
+  }
+
+  .theme-{{ themeID }} .border-tone-6{
+    border-color: {{ settings.color_tone_6 }};
+  }
+
+  /* cores de apoio */
+  .theme-{{ themeID }} .color-tone-7, p{
+    color: {{ settings.color_tone_7 }};
+  }
+
+  .theme-{{ themeID }} .border-tone-7{
+    border-color: {{ settings.color_tone_7 }};
+  }
+
+  .theme-{{ themeID }} .bg-tone-8{
+    background: {{ settings.color_tone_8 }};
+  }
+
+  .theme-{{ themeID }} .color-tone-9{
+    color: {{ settings.color_tone_9 }};
+  }
+
+  .theme-{{ themeID }} .color-tone-10{
+    color: {{ settings.color_tone_10 }};
+  }
+
+  .theme-{{ themeID }} .color-tone-10.color-opacity-10{}
+
+  .theme-{{ themeID }} .color-tone-10.color-opacity-75{}
+
+  .theme-{{ themeID }} .bg-tone-10{}
+
+  .theme-{{ themeID }} .border-tone-10{
+    border-color: {{ settings.color_tone_3 }};
+    border-color: rgba(255,255,255,.1);
+  }
+
+  #logotipo .logo-color{
+    color: {{ settings.color_text_logo }};
+  }
+  {% if settings.color_head and settings.color_head != "empty" %}
+  .custom-color-head{
+    background-color: {{ settings.color_head }}!important;
+  }
+  {% endif %}
+
+  {% if settings.color_mid and settings.color_mid != "empty" %}
+  .custom-color-mid{
+    background-color: {{ settings.color_mid }}!important;
+  }
+  {% endif %}
+
+  {% if settings.color_footer and settings.color_footer != "empty" %}
+  .custom-color-footer{
+    background-color: {{ settings.color_footer }}!important;
+  }
+  {% endif %}
+
+  {% if settings.color_body and settings.color_body != "empty" %}
+  .custom-color-body{
+    background-color: {{ settings.color_body }}!important;
+  }
+  {% endif %}
+
+  {% if settings.head_image and settings.head_image != 'empty' %}
+  .custom-background-head {
+    background-image: url("{{ themePath ~ settings.head_image }}")!important;
+  }
+  {% endif %}
+
+  {% if settings.mid_image and settings.mid_image != 'empty' %}
+  .custom-background-mid{
+    background-image: url("{{ themePath ~ settings.mid_image }}")!important;
+  }
+  {% endif %}
+
+  {% if settings.footer_image and settings.footer_image != 'empty' %}
+  .custom-background-footer{
+    background-image: url("{{ themePath ~ settings.footer_image }}")!important;
+  }
+  {% endif %}
+
+  {% if settings.body_image and settings.body_image != 'empty' %}
+  .custom-background-body{
+    background-image: url("{{ themePath ~ settings.body_image }}")!important;
+  }
+  {% endif %}
+
+  .background-no-image{
+    background-image: none !important;
+  }
+
+  .background-no-color{
+    background-color: inherit !important;
+  }
+
+.background-no-repeat{ background-repeat: no-repeat;}
+.background-repeat{ background-repeat: repeat;}
+.background-repeat-x{ background-repeat: repeat-x;}
+.background-repeat-y{ background-repeat: repeat-y;}
+.background-pos-no{background-position:inherit;}
+.background-pos-center{background-position:center;}
+.background-pos-left-center{background-position:left center;}
+.background-pos-top-center{background-position:top center;}
+
+#topo-mob .logo-mob .brand,
+.header .brand{color:{{ settings.corprimariatopo }};}
+
+.faixatopoheader ul li:first-child{margin-left:0; color:{{ settings.corprimariatopo }} ;}
+.faixatopoheader ul li:first-child a{color:{{ settings.corsecundariatopo }}; font-weight:700;}
+.faixatopoheader ul li:first-child a:hover{color:{{ settings.corsecundariatopo }};}
+.faixatopoheader ul li,
+.faixatopoheader ul li a{font:14px 'Open Sans', sans-serif; color:{{ settings.corprimariatopo }}; text-decoration:none;}
+.faixatopoheader ul li i,
+.faixatopoheader ul li svg{color:{{ settings.corsecundariatopo }}; fill:{{ settings.corsecundariatopo }};}
+
+
+.faixatopoheader ul li a:hover,
+.faixatopoheader ul li:hover a i,
+.faixatopoheader ul li:hover svg,
+.faixatopoheader ul li:hover a svg{color:{{ settings.corsecundariatopo }}; fill:{{ settings.corsecundariatopo }};}
+
+.carrinhotopo{}
+.carrinhotopo svg{fill: #303030;}
+.carrinhotopo,
+.carrinhotopo .precocarrinho{color:{{ settings.corprimariatopo }};}
+.carrinhotopo .contadorcarrinho{background-color: #303030; color:{{ settings.textomenutopo }}; border:1px solid {{ settings.textomenutopo }};}
+
+.buscartopo{border:1px solid {{ settings.corprimariatopo }};}
+.buscartopo input{color:{{ settings.corprimariatopo }};}
+.buscartopo .search-button{background-color: #303030;}
+.buscartopo .search-button svg{fill: #303030;}
+.buscartopo .search-button:hover{background-color: #303030; }
+.buscartopo .search-button:hover,
+.buscartopo .search-button:hover svg{ fill: #303030;}
+
+#topo-mob,
+#barratopofix{background-color:{{ settings.color_head }};}
+
+
+/* ----------------------------------------------------------
+    #Banner Home Radomico
+----------------------------------------------------------- */
+.owl-theme .owl-controls .owl-buttons div,
+.owl-theme .owl-controls .owl-page span{background:{{ settings.corterciariatopo }} !important;}
+
+/* ----------------------------------------------------------
+    #Faixa InformaÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂµes
+----------------------------------------------------------- */
+.barrainformacaofull{border:1px solid {{ settings.corprimaria }}; margin:20px 0;}
+.barrainformacao i svg path{fill:{{ settings.corprimaria }};}
+.barrainformacao .textoinfo1{ color:{{ settings.corprimaria }}; }
+
+
+/* ----------------------------------------------------------
+    #Menu Topo
+----------------------------------------------------------- */
+/*.faixatopomenu{background-color:{{ settings.barramenutopo }};}*/
+
+.menutopohorizontal > li > a{color:{{ settings.textomenutopo }}; }
+ul.menutopohorizontal > li{background-color:{{ settings.barramenutopo }};}
+
+.menutopohorizontal > li:hover > a,
+.menutopohorizontal > li > a:hover{color:{{ settings.corsecundaria }};}
+
+.menutopohorizontal li ul.menu-children li a,
+.menutopohorizontal li .menu-children2 li a{color:{{ settings.corsecundaria }}; }
+
+.menutopohorizontal li ul.menu-children li{
+  background-color: {{settings.fundosubmenutopo}};
+}
+.menutopohorizontal li ul.menu-children li a{
+  color: {{settings.textosubmenutopo}};
+}
+
+.menutopohorizontal li ul.menu-children li a:hover{
+  color: {{settings.textosubmenutopomouse}};
+}
+
+.menutopohorizontal li .menu-children,
+.menutopohorizontal .menutc .menu-children2 ul{border-color:{{ settings.barramenutopo }};}
+
+.menutopohorizontal .menutc{background-color:{{ settings.corsecundariatopo }};}
+.menutopohorizontal .menutc:hover{background-color:{{ settings.corterciariatopo }};}
+.menutopohorizontal .menutc > a{color:{{ settings.textomenutopo }};}
+
+.menutopohorizontal .menutc .menu-children2 ul{
+    background-color: {{settings.fundosubmenutopo}};
+}
+
+.menutopohorizontal li .menu-children2 li a, .menutodascategorias div .submenuchildren div a{
+  color: {{settings.textosubmenutopo}};
+}
+
+.menutodascategorias div .submenuchildren div a:hover
+.menutodascategorias div .submenuchildren div:hover a{color:{{ settings.textosubmenutopomouse }} !important;}
+
+
+/* ----------------------------------------------------------
+        #Sidebar Left
+----------------------------------------------------------- */
+ul.sub-menu-side > li > a:link,
+ul.sub-menu-side > li > a:visited,
+ul#main-menu-side li.parent-side > a,
+ul#main-menu-side > li.current-menu-item-side > a,
+ul#main-menu-side > li > a{color:{{ settings.corprimaria }} !important;}
+
+ul#main-menu-side > li.current-menu-item-side:hover > a,
+ul#main-menu-side > li > a:hover,
+ul#main-menu-side li.parent-side > a:hover,
+ul#main-menu-side > li.parent-side:hover > a{ color:{{ settings.corsecundaria }}; }
+
+ul.sub-menu-side > li > label{color:{{ corprimaria }};}
+ul.sub-menu-side > li > label:hover{color:{{ corsecundaria }};}
+
+
+
+/* ----------------------------------------------------------
+        #Showcase - Home
+----------------------------------------------------------- */
+.showcase-title,#NavVisitados .visitados:before{color:{{ settings.cortitulo }};}
+.showcase-title > span{color:{{ settings.cortitulo_destaque }};}
+.showcase ul li svg{fill:{{ settings.cortitulo }};}
+
+
+.page-login .caixa-login h3,
+.page-login .caixa-cadastro h3 {
+  color: {{ settings.cortitulo_destaque }};
+}
+
+
+/* ----------------------------------------------------------
+    #Produtos Home
+----------------------------------------------------------- */
+.product > div a:hover{border:2px solid {{ settings.corprecoproduto }};}
+.product a:before,
+.product a > svg{color:{{ settings.corprimaria }}; fill:{{ settings.corprimaria }};}
+.product .product-name h3{color:{{ settings.cornomeproduto }};}
+.product div.formasPagtoHome > span > span > span > strong.color,
+.product div.formasPagtoHome > span + span + span > strong.preco-parc2,
+#direita .PrecoPrincipal,
+#NavVisitados .precoAvista,
+.product .product-price div.precoHomePor .semPromocao > span{color:{{ settings.corprecoproduto }};}  
+
+.product .product-price div.precoHomePor .semPromocao > span{
+  color: {{ settings. corprecoproduto }} ;
+}
+
+
+
+
+/* ----------------------------------------------------------
+    #Newsletter - RodapÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ©
+-----------------------------------------------------------*/
+.barranews{background-color:{{ settings.barranews }}; color:{{ settings.textobarranews }}; fill:{{ settings.textobarranews }};}
+.barranews .col-md-6 svg,
+.barranews .col-md-6 div > h2{color:{{ settings.textobarranews }};}
+.barranews .col-md-6 input{color:{{ settings.corprimaria }};}
+.barranews .col-md-6 button{background:{{ settings.botaocadastrarnews }};color:{{ settings.txbotaocadastrarnews }};border-color:{{ settings.borderbotaocadastrarnews }};}
+.barranews .col-md-6 button:hover{background:{{ settings.borderbotaocadastrarnews }};color:{{ settings.botaocadastrarnews }};border-color:{{ settings.borderbotaocadastrarnews }};}
+
+/* ----------------------------------------------------------
+    #Footer - RodapÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ©
+-----------------------------------------------------------*/
+.footer .menuacessos .footer-title{color:{{ settings.corprimariarodape }};}
+.footer .menuacessos .contato-footer p {color:{{ settings.corprimariarodape }}; !important } 
+.footer .menuacessos .footer-title-payment{color:{{ settings.corprimariarodape }};}
+.footer .menuacessos{background-color:{{ settings.corbgrodape }};}
+.footer .menuacessos .footer-title + ul li > a{color:{{ settings.corprimariarodape }} !important;}
+.footer .menuacessos .footer-title + ul li > a:hover{color:{{ settings.corsecundariarodape }} !important;}
+
+.footer .caixaredessociais .siganos ul li{background-color:{{ settings.corprimariarodape }};}
+.footer .caixaredessociais .siganos ul li:hover{background-color:{{ settings.corbgrodape }};}
+.footer .caixaredessociais .siganos ul li i{color:{{ settings.corbgrodape }};}
+.footer .caixaredessociais .siganos ul li:hover i{color:{{ settings.corprimariarodape }};}
+
+.footer .selosenvio .footer-title{color:{{ settings.corprimaria }};}
+
+
+/* ----------------------------------------------------------
+    #Icones SVG
+-----------------------------------------------------------*/
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  background-color:rgba(255, 255, 255, 0);
+}
+
+.icon-correiosicones-bcd {
+  width: 2.96875em;
+}
+#icon-correiosicones-bcd .path1 {
+  fill: #004263;
+}
+#icon-correiosicones-bcd .path2 {
+  fill: #81b9e5;
+}
+#icon-correiosicones-bcd .path3 {
+  fill: #0091c4;
+}
+#icon-correiosicones-bcd .path4 {
+  fill: #002c51;
+}
+#icon-correiosicones-bcd .path5, #icon-correiosicones-bcd .path6 {
+  fill: #e3b30d;
+}
+#icon-correiosicones-bcd .path7 {
+  fill: #b06917;
+}
+
+.icon-imagesicones-bcd {
+  width: 1.125em;
+}
+
+
+/* Banner home */
+.banner-home .slick-arrow{
+    fill: {{ settings.color_slick_arrow }};
+}
+
+.banner-home .slick-arrow:hover{
+    fill: {{ settings.color_slick_arrow_hover }};
+}
+
+.banner-home .slick-dots button{
+    background: {{ settings.color_slick_dot }};
+}
+
+.banner-home .slick-dots .slick-active button{
+    background: {{ settings.color_slick_dot_active }};
+}
+   
+/* Cores filtro esquerdo*/
+.sideface, .sidebanner, aside .banner-side, .menudefiltros{
+background: {{ settings.corfundofiltroesquerdo }} !important;
+}
+
+.menudefiltros h3 {
+background: {{ settings.corfundofiltroesquerdotop }} !important;
+color: {{ settings.cortextofiltrotop }} !important;
+}
+
+.page-product #ProdAbas{
+   background: {{ settings.cor_abas }};
+}
+    
+.page-product #ProdAbas li a{
+    color: {{ settings.btn_txt }};
+}
+
+.botao-comprar{
+  background: {{ settings.btn_color_bg  }}  ;
+}
+
+#topo-mob .menutopo-mob .li-mob .a-mob,
+#menu-categorias-mob .a-mob {
+  background-color: {{ settings.corfundomobile }} !important;
+}
+
+#topo-mob .menutopo-mob i,
+#menu-categorias-mob i {
+  color: {{ settings.coriconemobile }} !important;
+}
+
+#topo-mob .menutopo-mob .contadorcarrinho{
+  background-color: {{ settings.cor_fundo_mobile }} !important;
+  color: {{ settings.cor_texto_mobile }} !important;
+}
+    
+.product-extra-buttons .pexb-free{
+    background-color: {{ settings.cor_btn_freeshipping }};
+}
+.product-extra-buttons .pexb-featured{
+    background-color: {{ settings.cor_btn_featured }};
+}
+.product-extra-buttons .pexb-new{
+    background-color: {{ settings.cor_btn_new }};
+}
+.product-extra-buttons .pexb-free p,
+.product-extra-buttons .pexb-featured p,
+.product-extra-buttons .pexb-new p{
+    color: {{ settings.cor_btn_tx_btns }};
+}
+
+</style>
+
+

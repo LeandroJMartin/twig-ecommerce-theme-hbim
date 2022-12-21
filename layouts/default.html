@@ -1,0 +1,151 @@
+{% spaceless %}
+<!doctype html>
+<html data-theme="{{ settings.extension_id }}" data-store="{{ store.id }}" class="page-{{ pages.current }}">
+<head>
+
+    {{ html.charset() }}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- [if IE]<meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+
+    {{ tray.meta }}
+
+    {{ tray.styles }}
+
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Oswald:400,300,700">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/theme.min.css') }}">
+
+    {% element 'custom' { 'themeID': 5 } %}
+
+    {{ tray.analytics }}
+    {{ googleTagManager.header(pages.current, tagManagerData) }}
+
+</head>
+<body class="theme-5 {{ settings.class_name }} {% if settings.checkbox_body_color == 1 %}background-no-color{% endif %}{% if settings.checkbox_body_image == 1 %} background-no-image{% endif %} {{ settings.position_body_bg }} {{ settings.repeat_body_bg }} {{ settings.structure }} {{ settings.fonts }} page-{{ pages.current }} custom-background-body custom-color-body" data-page="{{ pages.current }}">
+    {{ googleTagManager.top(pages.current, tagManagerData) }}
+    {% element 'snippets/messages' %}
+
+    <div id="NavSuperior" class="{% if settings.checkbox_head_color == 1 %}background-no-color{% endif %}{% if settings.checkbox_head_image == 1 %} background-no-image{% endif %} {{ settings.position_head_bg }} {{ settings.repeat_head_bg }} custom-background-head custom-color-head">
+
+        {% element 'header' %}
+
+        {% if pages.current == 'home' %}
+            <div class="b_desk">
+                {% element 'snippets/banner-home' %}
+            </div>
+            <div class="b_mobi">
+                {% element 'snippets/banner-home-mobile' %}
+            </div>
+        {% endif %}
+
+        {% if pages.current == 'home' %}
+            <div class="banner-regua">
+                {{ banner.extra4 }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <section class="page-content">
+                {{ content_for_layout }}
+            </section>
+        </div>
+    </div>
+
+    <div class="banner-lgpd banner-lgpd__container">
+      <div class="banner-lgpd__column">
+        <p>
+          Nossos sites utilizam cookies para melhorar a sua segurança e experiência online. Leia mais sobre na nossa <a href="https://hbimuniformes.commercesuite.com.br/termos-e-condicoes" >Termos e condições</a>. Ao continuar, você concorda com as condições.
+        </p>
+      </div>
+      <div class="banner-lgpd__column">
+        <button class="banner-lgpd__accept">OK</button>
+      </div>
+    </div>
+
+    <br />
+
+    {% if banner.footer %}
+        <div class="banner banner-footer">
+            {{ banner.footer }}
+        </div>
+    {% endif %}
+
+    {% element 'footer' %}
+
+    {% if pages.current == 'home' %}
+        {{ banner.popup ~ banner.floating }}
+    {% endif %}
+
+    {% element 'snippets/credits' %}
+
+    {% element 'snippets/modal' %}
+    {{ googleTagManager.bottom(pages.current, tagManagerData) }}
+    {{ tray.scripts }}
+    {{
+            html.script({
+                '0' : tray.paths.js ~ 'dist/application.min.js?' ~ utils.assets_version,
+                '1' : tray.paths.js ~ 'init.js?' ~ utils.assets_version
+            })
+    }}
+    {% element 'snippets/pageview' %}
+    {{ store.chat }}
+
+    <script type="text/javascript" src="{{ asset('js/jquery-3.6.0.min.js')  }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js')  }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/slick.min.js')  }}"></script>
+    <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js')  }}"></script>
+    <script type="text/javascript" src="{{ asset('js/hbim-scripts.js')  }}"></script>
+    <script type="text/javascript" src="{{ asset('js/theme.min.js')  }}"></script>
+
+
+    <script>
+        jQuery('.open-filters').click(function() {
+            jQuery('.filter').slideToggle();
+        });
+
+        /*-- PopUp do site --*/
+        /*--
+        $(window).on('load',function(){
+           setTimeout(function(){
+               $('#myModal').modal('show');
+           }, 700);
+        });
+        --*/
+
+      /*-- AJUSTA TAMANHO DAS DIV Empresa --*/
+      jQuery(document).ready(function(){
+        var tam = $(window).width();
+        if (tam > 992){
+          var tamanho = $(".catchHeight").height();
+          jQuery(".adjHeight").height(tamanho);
+        };
+      });
+
+    </script>
+
+    <script>
+      if(localStorage.cookies) {
+    		document.getElementsByClassName("banner-lgpd")[0].classList.add("accept");
+    	};
+
+    	var acceptCookies = function() {
+    		document.getElementsByClassName("banner-lgpd")[0].classList.add("accept");
+    		localStorage.setItem("cookies", "accept");
+    	};
+
+    	var btnCookies = document.getElementsByClassName("banner-lgpd__accept")[0];
+    	btnCookies.onclick = acceptCookies;
+    </script>
+
+</body>
+</html>
+{% endspaceless %}

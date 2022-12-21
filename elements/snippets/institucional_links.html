@@ -1,0 +1,13 @@
+<ul>
+    {% for custom in pages.custom %}
+        <li>
+            <a href="{{ custom.url }}">{{ custom.name }}</a>
+        </li>
+    {% endfor %}
+    <li>
+        <a href="{{ links.central }}">Minha Conta</a>
+    </li>
+    <li>
+        <a href="{{ links.contact }}" data-tray-tst="fale_conosco">Contato</a>
+    </li>
+</ul>

@@ -1,0 +1,81 @@
+<ul class="menutopohorizontal">
+
+    {% set limiteCategorias = 0 %}
+    {% for level1 in categories %}
+        {% if limiteCategorias < 12 %}
+            <li>
+                <a href="{{ level1.link }}" id="bugIE">
+                    {{ level1.name }}
+                </a>
+                {% if level1.children %}
+                    <ul class="menu-children">
+                    {% for level2 in level1.children %}
+                        <li>
+                            <a href="{{ level2.link }}"><span>{{ level2.name }}</span></a>
+
+                            {% if level2.children %}
+                            <ul class="menu-subchildren">
+                                {% for level3 in level2.children %}
+                                <li>
+                                    <a href="{{ level3.link }}">{{ level3.name }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% set limiteCategorias = limiteCategorias + 1 %}
+        {% endif %}
+    {% endfor %}
+    <li class="proj-ex"><a href="/projeto-exclusivo">Projeto Exclusivo</a></li>
+
+    
+<!--
+        <li class="menutc">
+            <a>Ver Todas</a>
+            <div class="menu-children2 container">
+                <ul>
+                    <li>
+                        <div class="menutodascategorias row">
+                            {% for level1 in categories %}
+                                <div class="col-xs-3 col-md-3">
+
+                                    <a href="{{ level1.link }}">{{ level1.name }}</a>
+                                    {% if level1.children %}
+                                        <div class="submenuchildren">
+                                        {% for level2 in level1.children %}
+                                            <div>
+                                                <a href="{{ level2.link }}">{{ level2.name }}</a>
+                                            </div>
+
+                                            {% if level2.children %}
+                                                <ul class="submenulevel3">
+                                                {% for level3 in level2.children %}
+                                                    <li>
+                                                        <a href="{{ level3.link }}">{{ level3.name }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        {% endfor %}
+                                        </div>
+                                    {% endif %}
+
+                                </div>
+                                {% if loop.index is divisible by(4) %}
+                        </div>
+                        <div class="menutodascategorias row">
+                                {% endif %}
+
+                            {% endfor %}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+-->
+
+</ul>

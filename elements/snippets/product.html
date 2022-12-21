@@ -1,0 +1,65 @@
+{% if pages.current == 'product' %}
+<div>
+    <a href="{{ product.link }}">
+{% else %}
+<div itemscope itemtype="http://schema.org/Product">
+    <a href="{{ product.link }}" itemprop="url">
+{% endif %}
+        <div class="efeitoproduto">
+            <div class="product-image">
+                {% set loading = tray.paths.system_image ~ "/loading.gif" %}
+
+                {% if product.images[0] %}
+                    <img class="img-responsive lazy fit" data-original="{{ product.images[0].full }}" src="{{ product.images[0].full }}" alt="{{ product.name }}" title="{{ product.name }}">
+                {% else %}
+                    <img class="img-responsive lazy" data-original="{{ asset('img/noimage.svg') }}" src="{{ asset('img/noimage.svg') }}" alt="{{ product.name }}" title="{{ product.name }}">
+                {% endif %}
+                {% set porcentagemDesconto = 100 - ( product.price_offer / product.price ) * 100 %}
+                {% if porcentagemDesconto < 100 %}
+                  <span class="desconto">
+                     -{{ porcentagemDesconto|number_format }}%
+                  </span>
+                {% endif %}
+            </div>
+
+            <div class="product-name">
+                <h3 itemprop="name">{{ product.name }}</h3>
+            </div>
+
+            {% for discount in product.ProgressiveDiscounts %}
+            {% if discount.tag %}
+               {#   <div class="product-discount-recursive-tag">{{discount.tag}}</div>
+                    <div class="product-discount-recursive-desc">{{discount.description}}</div>
+               #}
+            {% endif %}
+        {% endfor %}
+
+            {% if settings.cache_infopreco %}
+            <div data-module="pricing" data-snippet="snippets/product-price" data-product-id="{{ product.id }}">
+                <div class="pricing">
+                    Carregando...
+                </div>
+            </div>
+            {% else %}
+                {% element 'snippets/product-price' {"product": product } %}
+            {% endif %}
+
+        </div>
+    </a>
+</div>
+
+{% if (pages.current == 'catalog' or pages.current == 'search') and settings.compare %}
+
+    <div class="compare-product">
+        {% set compareCSS = 'compare-hidden' %}
+
+        <a data-compare="remove" href="{{ links.compare_delete ~ product.id }}" class="{{ not product.compare ? compareCSS }}">
+            {{ Translation("remover_comparar") }}
+        </a>
+
+        <a data-compare="add" href="{{ links.compare_add  ~ product.id }}" class="{{ product.compare ? compareCSS }}">
+            {{ Translation("comparar_produto") }}
+        </a>
+    </div>
+
+{% endif %}

@@ -1,0 +1,64 @@
+{% element 'snippets/barrainformacao' %}
+
+<div class="bannersextrashome container">
+    <div class="row show-grid banner-showcase">
+        <div class="col-md-6">
+            {{ banner.extra1 }}
+        </div>
+        <div class="col-md-6">
+            {{ banner.extra2 }}
+        </div>
+    </div>
+</div>
+
+<div class="showcase row shocase-1">
+    <h4 class="showcase-title">{{ settings.titulo_vitrine_1 }}</h4>
+</div>
+
+<div class="showcasefirst" id="locx">
+    {% set filter_vitrine_1 = settings.showcase_1 %}
+    {% set products = Products({
+        'filter': filter_vitrine,
+        'limit': 20,
+        'order': 'rand'
+    }) %}
+
+    {% element 'snippets/showcase-home' {
+        "showcaseTitle": "",
+        "products": products
+    } %}
+</div>
+
+<div class="showcase row">
+    <h4 class="showcase-title">{{ settings.titulo_vitrine_2 }}</h4>
+</div>
+
+<div class="showcasefirst">
+    {% set filter_vitrine_2 = settings.showcase_2 %}
+    {% set products = Products({
+        'filter': filter_vitrine_2,
+        'limit': 20,
+        'order': 'rand'
+    }) %}
+
+    {% element 'snippets/showcase-home' {
+        "showcaseTitle": "",
+        "products": products
+    } %}
+</div>
+
+<div class="bannersextrashome container">
+    <div class="row show-grid banner-showcase banner-extra-3 align-items-center">
+        <div class="col-lg-6 no-padding img-fit">
+            {{ banner.extra3 }}
+        </div>
+        <div id="proExc" class="col-lg-6">
+            <div class="cont-tx">
+                <h2>{{ banners.extra3.alt }}</h2>
+                <a href="{{ banners.extra3.link }}" alt="Fale com a nossa equipe - HBim" class="btn btn-outline-light">Fale com a nossa equipe</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% element 'snippets/popup' %}

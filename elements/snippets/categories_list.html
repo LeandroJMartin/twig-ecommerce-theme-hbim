@@ -1,0 +1,21 @@
+<ul id="main-menu-side">
+    {% for category in categories %}
+        {% if loop.index <= limit or not limit %}
+		{% set children = category.children %}
+
+            <li class="parent-side">
+            	<a href="{{ category.link }}">{{ category.name }}</a>
+				{% if children %}
+					<ul class="sub-menu-side">
+					{% for child in children %}
+						<li>
+							<a href="{{ child.link }}">{{ child.name }}</a>
+						</li>
+					{% endfor %}
+					</ul>
+				{% endif %}
+            </li>
+
+        {% endif %}
+    {% endfor %}
+</ul>

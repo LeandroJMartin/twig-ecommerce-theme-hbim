@@ -1,0 +1,165 @@
+{% element 'snippets/newsletter' %}
+
+{% if settings.whatsapp != '' %}
+    <div class="api-whats">
+        <a href="https://api.whatsapp.com/send?phone=55{{ settings.whatsapp|replace({'(': '', ')': '', '-': '', ' ': ''}) }}" target="_blank" rel="noopener">
+           <img src="{{ asset('img/icon-whats.png') }}" />
+        </a>
+    </div>
+{% endif %}
+
+<footer class="footer">
+
+    <div class="menuacessos">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <h4 class="footer-title">Institucional</h4>
+                    {% element 'snippets/institucional_links' %}
+                    
+                <div class="seguranca">
+                    <h5 class="footer-title">Segurança</h5>
+                    <ul>
+                        <li>{{ seals.ebit }}</li>
+                        <li>{{ seals.hackersafe }}</li> 
+                        {% if settings.enable_seal %}
+                        <li> {{ settings.seal_code }} </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                
+                </div>
+
+                <div class="col-sm-3">
+                    <h4 class="footer-title">Ajuda e Suporte</h4>
+                    {% element 'snippets/help_links' %}
+                </div>
+
+                <div class="col-sm-3">
+                    <h4 class="footer-title">Formas de Pagamento</h4>
+                <div class="payment-brand">
+                        <h5 class="footer-title-payment">&Agrave; Vista</h5>
+                        {% for payment in paymentMethods.order %}
+                            <div class="payment-form">
+                                <img src="{{ payment.thumbnail.url }}" alt="{{ payment.display_name }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="payment-brand">
+                        <h5 class="footer-title-payment">&Agrave; Prazo</h5>
+                        {% for payment in paymentMethods.credit %}
+                            <div class="payment-form">
+                                <img src="{{ payment.thumbnail.url }}" alt="{{ payment.display_name }}">
+                            </div>
+                        {% endfor %} 
+                    </div>
+                    <div>
+                    <h5 class="footer-title">Forma de Envio</h5>
+                        {% if settings.imgformasenvio != '' %}
+                        <div class="shipping-box"><img src="{{ themePath }}{{ settings.imgformasenvio }}" alt=""></div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    {% if settings.social_facebook != '' %}
+                    <div class="caixafacebook">
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=191315417651930";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+
+                        <div class="fb-page" data-href="{{ settings.social_facebook }}" data-width="285" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false">
+                            <div class="fb-xfbml-parse-ignore">
+                                <blockquote cite="{{ settings.social_facebook }}">
+                                    <a href="{{ settings.social_facebook }}"></a>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="caixaredessociais">
+                        <div class="siganos">
+                            <ul>
+                                {% if settings.social_facebook != '' %}
+                                <li>
+                                    <a href="{{ settings.social_facebook }}" target="_blank">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% if settings.social_twitter != '' %}
+                                <li>
+                                    <a href="{{ settings.social_twitter }}" target="_blank">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% if settings.urlgoogleplus != '' %}
+                                <li>
+                                    <a href="{{ settings.urlgoogleplus }}" rel="publisher" target="_blank">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% if settings.social_youtube != '' %}
+                                <li>
+                                    <a href="{{ settings.social_youtube }}" target="_blank">
+                                        <i class="fa fa-youtube"></i>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% if settings.social_instagram != '' %}
+                                <li>
+                                    <a href="{{ settings.social_instagram }}" target="_blank">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% if settings.social_pinterest != '' %}
+                                <li>
+                                    <a href="{{ settings.social_pinterest }}" target="_blank">
+                                        <i class="fa fa-pinterest"></i>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% if settings.whatsapp != '' %}
+                                <li>
+                                    <a href="https://api.whatsapp.com/send?phone=55{{ settings.whatsapp|replace({'(': '', ')': '', '-': '', ' ': ''}) }}" target="_blank" rel="noopener">
+                                       <i class="fa fa-whatsapp"></i> 
+                                    </a>
+                                </li>
+                                {% endif %}
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div><!--fim row-->
+        </div> <!-- fim container -->
+    </div> <!-- fim menu acesso -->
+
+    <div class="fullcreditos">
+        <div class="container">
+            <div class="row rodape-credito">
+                <div class="col-sm-12">
+                    {{ Translation('ag_mensagem_rodape') }}
+                    <div class="development">
+                        <span>Desenvolvido por <a href="https://mayacomunicacao.com.br" target="_blank"><img src="https://www.mayacomunicacao.com.br/wp-content/uploads/2021/02/logo-1.png" /></a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>

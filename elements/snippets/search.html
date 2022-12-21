@@ -1,0 +1,13 @@
+<form role="form" action="{{ links.search }}" data-search="suggestion" data-tray-tst="form_busca">
+    <input type="hidden" name="loja" value="{{ store.id }}">
+    <div class="row buscartopo">
+
+            <input type="text" placeholder="O que voc&ecirc; deseja?" name="palavra_busca" data-input="suggestion" data-tray-tst="busca_palavra" required>
+            <button class="search-button">
+		        <svg viewBox="0 0 1024 1024">
+		            <path class="path1" d="M683.841 117.168c-156.213-156.213-410.46-156.213-566.673 0-156.179 156.246-156.179 410.46 0 566.707 139.111 139.078 355.77 153.978 511.881 45.377 3.285 15.543 10.802 30.376 22.892 42.465l227.495 227.495c33.152 33.085 86.725 33.085 119.708 0 33.119-33.119 33.119-86.691 0-119.708l-227.495-227.563c-12.022-11.988-26.888-19.539-42.431-22.824 108.668-156.145 93.768-372.77-45.377-511.949zM612.016 612.050c-116.626 116.626-306.431 116.626-423.024 0-116.558-116.626-116.558-306.397 0-423.024 116.592-116.592 306.397-116.592 423.024 0 116.626 116.626 116.626 306.397 0 423.024z"></path>
+		        </svg>
+            </button>
+
+    </div>
+</form>

@@ -1,0 +1,25 @@
+{% if products|length > 0 %}
+    <div class="showcase clearfix" data-tray-tst="vitrine_home" itemscope itemtype="https://schema.org/SomeProducts">
+        
+        <h2>
+            <strong>{{ showcaseTitle }}</strong>
+        </h2>
+        
+        <div class="owl-carousel owl-theme owl-produtos">
+            
+        {% for product in products %}
+            
+            {% set ranking = product.ranking %}
+            
+            <div class="item product {{ settings.radio_cols_mobile }}" data-tray-tst="vitrine_produto">
+                
+                {% element 'snippets/product' {"product": product} %}
+                
+            </div>
+            
+        {% endfor %}
+            
+        </div>
+        
+    </div>
+{% endif %} 

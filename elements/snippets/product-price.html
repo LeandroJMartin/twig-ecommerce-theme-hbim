@@ -1,0 +1,36 @@
+{% if product.available %}
+    {% if not product.upon_request %}
+        <div class="preco-list">
+        <div class="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          <div class="precoHomeDe">
+          {% if product.price_offer > 0 and product.show_price %}
+              De: <span>R$ {{ product.price|currency }}</span>
+          {% endif %}
+          </div>
+
+          <div class="precoHomePor">
+
+              {% set price = product.price_offer > 0 ? product.price_offer : product.price %}
+              <span itemprop="price" style="display: none">{{ price }}</span>
+              <div class="semPromocao">
+                  <span>R$ {{ price|currency }}</span>
+              </div>
+              
+          </div>
+
+          <meta itemprop="priceCurrency" content="BRL">
+        </div>
+
+        <div class="formasPagtoHome">
+            {{ product.payment }}
+        </div>
+        </div>
+
+    {% else %}
+        "PRE&Ccedil;O SOB CONSULTA"
+    {% endif %}
+    {% else %}
+        <div class="indispo">
+            <label>"PRODUTO INDISPON&Iacute;VEL"</label>
+        </div>
+    {% endif %}
